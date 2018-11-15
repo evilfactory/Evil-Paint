@@ -37,7 +37,11 @@ function draw() {
 
 function greet(){
   background(0);
-  var data = {o: 0 };
+    var data = {
+    x: 53,
+    y: 432
+  };
+  
   socket.emit('reset',data)
 }
 
