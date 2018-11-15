@@ -6,7 +6,7 @@
 var socket;
 
 function setup() {
-  createCanvas(1000, 1000);
+  createCanvas(1000, 800);
   background(0);
   // Start a socket connection to the server
   // Some day we would run this server somewhere else
