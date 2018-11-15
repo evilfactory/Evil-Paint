@@ -30,7 +30,9 @@ function draw() {
 
 
 function greet(){
-  
+  background(0);
+  var data = {o: 0 };
+  socket.emit('reset',data)
 }
 
 function mouseDragged() {
