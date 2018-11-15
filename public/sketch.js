@@ -14,7 +14,6 @@ function setup() {
   socket.on('mouse',
 
     function(data) {
-      console.log("Got: " + data.x + " " + data.y);
 
       fill(data.c[0],data.c[1],data.c[2]);
       noStroke();
