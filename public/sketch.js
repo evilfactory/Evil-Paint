@@ -29,6 +29,10 @@ function draw() {
   // Nothing
 }
 
+  button = createButton('REset');
+  button.position(500, 65);
+  button.mousePressed(greet);
+
 function mouseDragged() {
   // Draw some white circles
   fill(255);
