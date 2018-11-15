@@ -21,6 +21,13 @@ function setup() {
       ellipse(data.x, data.y, 20, 20);
     }
   );
+  
+    socket.on('reset',
+
+    function(data) {
+       background(0);
+    }
+  );
 }
 
 function draw() {
