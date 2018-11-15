@@ -46,6 +46,20 @@ io.sockets.on('connection',
 
       }
     );
+  
+      socket.on('reset',
+      function(data) {
+        // Data comes in as whatever was sent, including objects
+        console.log("reset");
+      
+        // Send it to all other clients
+        socket.broadcast.emit('reset', data);
+        
+        // This is a way to send to everyone including sender
+        // io.sockets.emit('message', "this goes to everyone");
+
+      }
+    );
     
     socket.on('disconnect', function() {
       console.log("Client has disconnected");
