@@ -1,23 +1,21 @@
-// ITP Networked Media, Fall 2014
-// https://github.com/shiffman/itp-networked-media
-// Daniel Shiffman
 
-// Keep track of our socket connection
 var socket;
 
 function setup() {
   createCanvas(1000, 800);
   background(0);
-  // Start a socket connection to the server
-  // Some day we would run this server somewhere else
+
   socket = io.connect('https://frede-test.herokuapp.com/');
-  // We make a named event called 'mouse' and write an
-  // anonymous callback function
+
+    button = createButton('Reset');
+  button.position(0, 0);
+  button.mousePressed(greet);
+  
   socket.on('mouse',
-    // When we receive data
+
     function(data) {
       console.log("Got: " + data.x + " " + data.y);
-      // Draw a blue circle
+
       fill(data.c[0],data.c[1],data.c[2]);
       noStroke();
       ellipse(data.x, data.y, 20, 20);
@@ -29,9 +27,11 @@ function draw() {
   // Nothing
 }
 
-  button = createButton('REset');
-  button.position(500, 65);
-  button.mousePressed(greet);
+
+
+function greet(){
+  
+}
 
 function mouseDragged() {
   // Draw some white circles
