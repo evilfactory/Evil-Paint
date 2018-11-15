@@ -46,11 +46,9 @@ function greet(){
 }
 
 function mouseDragged() {
-  // Draw some white circles
   fill(255);
   noStroke();
   ellipse(mouseX,mouseY,20,20);
-  // Send the mouse coordinates
   sendmouse(mouseX,mouseY, [255,0,0]);
 }
 
@@ -66,18 +64,13 @@ window.addEventListener("keydown", function(event){
 }, false);
 
 
-// Function for sending to the socket
 function sendmouse(xpos, ypos, color) {
-  // We are sending!
-  console.log("sendmouse: " + xpos + " " + ypos);
   
-  // Make a little object with  and y
   var data = {
     x: xpos,
     y: ypos,
     c: color
   };
 
-  // Send that object to the socket
   socket.emit('mouse',data);
 }
