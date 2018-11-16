@@ -1,23 +1,51 @@
-
 var socket;
+
+var colorinputs = [];
+var sizeinput;
 
 function setup() {
   createCanvas(1000, 800);
   background(0);
 
-  socket = io.connect('https://evil-factory.herokuapp.com/');
+  socket = io.connect('http://localhost:3000');
 
     button = createButton('Reset');
   button.position(0, 0);
   button.mousePressed(greet);
   
+var name = ["Red","Blue","Green"]
+
+colort = createElement('h2', "Color"); 
+colort.position(1123, 30);
+
+for (var i = 0; i < name.length; i++) {
+
+colorinputs[i] = createInput();
+colorinputs[i].position(1100, 65+47*(i+1));
+colorinputs[i].value("255");
+colorinputs[i].size(50,20)
+
+textr = createElement('h2', name[i]); 
+textr.position(1170, 49+44*(i+1));
+}
+
+sizeinput = createInput();
+sizeinput.position(1100, 320);
+sizeinput.value("20");
+sizeinput.size(50,20)
+
+text = createElement('h2', "Size"); 
+text.position(1127, 250);
+
+
+
   socket.on('mouse',
 
     function(data) {
-
+    console.log(data)
       fill(data.c[0],data.c[1],data.c[2]);
       noStroke();
-      ellipse(data.x, data.y, 20, 20);
+      ellipse(data.x, data.y, data.a, data.a);
     }
   );
   
@@ -27,10 +55,13 @@ function setup() {
        background(0);
     }
   );
+
+socket.emit('inforeq');
+
 }
 
 function draw() {
-  // Nothing
+ 
 }
 
 
@@ -46,30 +77,27 @@ function greet(){
 }
 
 function mouseDragged() {
-  fill(255);
+
+  var r = parseInt(colorinputs[0].value());
+  var g = parseInt(colorinputs[1].value());
+  var b = parseInt(colorinputs[2].value());
+
+  fill(r,g,b);
   noStroke();
-  ellipse(mouseX,mouseY,20,20);
-  sendmouse(mouseX,mouseY, [255,0,0]);
+  ellipse(mouseX,mouseY,parseInt(sizeinput.value()),parseInt(sizeinput.value()));
+
+  sendmouse(mouseX,mouseY, [r,g,b], parseInt(sizeinput.value()));
 }
 
-window.addEventListener("keydown", function(event){
 
-    if(event.keyCode == 87){
-    	  fill(0);
-  noStroke();
-  ellipse(mouseX,mouseY,20,20);
-  sendmouse(mouseX,mouseY, [0,0,0]);
-    }
-
-}, false);
-
-
-function sendmouse(xpos, ypos, color) {
+function sendmouse(xpos, ypos, color, size) {
+  console.log("sendmouse: " + xpos + " " + ypos);
   
   var data = {
     x: xpos,
     y: ypos,
-    c: color
+    c: color,
+    a: size
   };
 
   socket.emit('mouse',data);
