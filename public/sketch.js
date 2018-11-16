@@ -7,7 +7,7 @@ function setup() {
   createCanvas(1000, 800);
   background(0);
 
-  socket = io.connect('http://localhost:3000');
+  socket = io.connect('https://evil-factory.herokuapp.com/');
 
     button = createButton('Reset');
   button.position(0, 0);
