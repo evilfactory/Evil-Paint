@@ -1,12 +1,12 @@
 {
-  "name": "sockets_p5",
-  "version": "1.0.0",
-  "description": "This is an example for how to use sockets with p5.js.",
+  "name": "evil-paint",
+  "version": "2.0.0",
+  "description": "paint",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Daniel Shiffman",
+  "author": "Evil Factory",
   "license": "ISC",
   "dependencies": {
     "express": "^4.13.4",
