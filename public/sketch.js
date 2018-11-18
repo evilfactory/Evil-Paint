@@ -42,7 +42,6 @@ text.position(1127, 250);
   socket.on('mouse',
 
     function(data) {
-    console.log(data)
       fill(data.c[0],data.c[1],data.c[2]);
       noStroke();
       ellipse(data.x, data.y, data.a, data.a);
@@ -91,7 +90,6 @@ function mouseDragged() {
 
 
 function sendmouse(xpos, ypos, color, size) {
-  console.log("sendmouse: " + xpos + " " + ypos);
   
   var data = {
     x: xpos,
