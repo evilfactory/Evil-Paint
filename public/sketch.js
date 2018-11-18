@@ -78,8 +78,8 @@ function greet(){
 function mouseDragged() {
 
   var r = parseInt(colorinputs[0].value());
-  var g = parseInt(colorinputs[1].value());
-  var b = parseInt(colorinputs[2].value());
+  var g = parseInt(colorinputs[2].value());
+  var b = parseInt(colorinputs[1].value());
 
   fill(r,g,b);
   noStroke();
